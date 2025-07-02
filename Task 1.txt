@@ -1,0 +1,29 @@
+Task 1 
+
+Summary Report: 
+
+a. Tagging Methodology**
+The dataset for Task 1 included three key free-text fields: `Complaint`, `Cause`, and `Correction`. The goal was to extract and assign standardized tags across five categories: `Root Cause`, `Symptom_Condition`, `Symptom_Component`, `Fix_Condition`, and `Fix_Component`, using a provided taxonomy sheet.
+
+To ensure consistency and accuracy, the following approach was used:
+
+1. Text Preprocessing: All free-text entries were cleaned by converting them to lowercase and removing leading/trailing whitespace to allow for accurate keyword matching.
+
+2. Keyword-Based Matching: Each of the five tag types had a predefined list of keywords. For each record:
+
+   * The `Complaint` text was used to identify `Symptom_Condition` and `Symptom_Component` by scanning for taxonomy keywords.
+   * The `Cause` field was parsed to detect `Root Cause` tags.
+   * The `Correction` field was matched against known `Fix_Condition` and `Fix_Component` keywords.
+   * If no keyword matched, the tag was set to "unknown" for clarity.
+
+3. Manual Review (optional): For ambiguous entries or partial matches, partial string logic was considered (e.g., using `in` or fuzzy match techniques), but due to time constraints and consistency expectations, strict keyword matching was prioritized.
+
+This logical rule-based tagging helped structure unstructured text for downstream analysis, ensuring each entry was aligned with taxonomy standards.
+
+b. Potential Insights Generated
+Through tagging, multiple patterns began to emerge:
+
+**Steering systems** and **battery components** frequently appeared in both `Symptom_Component` and `Fix_Component` tags, indicating recurring issues.
+Common conditions like "noise", "vibration", and "leak" often pointed to early-stage symptoms and served as early warning indicators. A significant proportion of `Root Cause` tags pointed to software calibration issues and loose connections, suggesting potential areas for preemptive quality control.
+Cross-tag analysis between complaints and corrections revealed a strong alignment between certain symptoms and specific fixes, which can be used to build predictive maintenance models.
+

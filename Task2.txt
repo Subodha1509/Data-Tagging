@@ -1,0 +1,43 @@
+AxionRay Data Analyst Assessment - Task 2 Report
+
+a. Column Analysis
+The dataset contains 52 columns and a few hundred rows. Key column-level observations include:
+
+
+
+Many other columns were identifiers (e.g., dealer, platform, transmission) with moderate variability. Some columns like `CAMPAIGN_NBR` had a high percentage of missing values and were dropped during cleaning.
+
+
+b. Data Cleaning Summary
+
+Steps performed:
+
+* **Missing values**: Filled nulls in text fields with "unknown" and numerical fields with median values. Dropped columns with >60% missing values (e.g., `CAMPAIGN_NBR`).
+* **Column normalization**: Standardized all column names to lowercase and stripped whitespace to avoid access errors.
+* **Categorical cleanup**: Removed inconsistent capitalization and whitespace in fields like `dealer_name`, `platform`, and `engine_desc`.
+* **Outlier handling**: Identified extreme values in `km` and `totalcost` using box plots. Most were retained after confirming they reflected rare but valid cases.
+
+
+
+c. Visualizations
+
+1. Top Causal Parts
+   Bar plot showing the top 10 most frequently occurring failed components (e.g., battery, steering sensor).
+
+2. Customer Complaint Word Cloud
+   Visual representation of most common terms in customer complaints. Common themes included "noise", "steering", "brake", and "vibration".
+
+3. Repair Cost Distribution
+   Histogram of `totalcost` values, showing that most repairs are low-cost, with a long tail of high-cost repairs.
+
+
+
+d. Generated Tags & Key Takeaways
+
+Generated Tags:
+From `customer_verbatim` and `correction_verbatim`, tags were generated using keyword extraction for:
+
+* `symptom_component`
+* `fix_component`
+
+
